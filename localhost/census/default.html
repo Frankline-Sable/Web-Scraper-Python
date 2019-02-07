@@ -1,0 +1,863 @@
+<!doctype html>
+<!--
+W3-BLUE-GRAY
+-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Census,Kenya,2018">
+    <meta name="description" content="Kenya Census Website">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+
+    <title>Census 2018</title>
+    <script type="text/javascript" src="css/JQuery/jquery-3.3.1.min.js"></script>
+
+    <style>
+
+        #sideNav2 ul a {
+            text-decoration: none;
+        }
+
+        #sideNav2 ul {
+            list-style-type: none;
+        }
+
+        #sideNav2 ul li {
+            background-color: rgba(0, 0, 0, 0.66);
+            margin: auto 8px;
+            padding-right: 55px !important;
+        }
+
+        #sideNav2 ul li:hover {
+            background-color: palevioletred;
+        }
+
+        #sideNav2 p {
+            padding: 0;
+            margin: 0;
+            padding-left: 8px;
+        }
+
+        #sideNav2 a {
+            text-decoration: none;
+        }
+
+        @media screen and (max-width: 650px) {
+            
+			.dfc{
+				display: none;
+			}
+
+        }
+
+    </style>
+    <link href="css/W3Schools/w3.css" rel="stylesheet">
+    <link href="css/FontAwesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/anim.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+<nav class="" id="nav">
+    <ul class="menu-topnav w3-navbar w3-large w3-text-white w3-hide-small"
+        style="" id="menu-topnav">
+        <li class=""><a href="#"><span>HOME</span></a></li>
+        <li class=""><a href="#_contactUs"><span>ABOUT</span></a></li>
+        <li class=""><a href="#sec-6"><span>CONNECT</span></a></li>
+        <li class=""><a href="#_contactUs"><span>CONTACT</span></a></li>
+        <li class=""><a href="Page/Inquiry_Page.html" class=""><span>INQUIRY</span></a></li>
+    </ul>
+    <section style="position: fixed; z-index: 3; right: 96px; top: 24px;">
+        <div class="hamburger w3-hide-small" onclick="openTopNav(this);"
+             style="position: fixed; z-index: 3; right: 92px; top: 20px;">
+            <div class="bar1 w3-white"></div>
+            <div class="bar2 w3-white"></div>
+            <div class="bar3 w3-white"></div>
+        </div>
+
+
+        <div class="hamburger  w3-hide-large w3-hide-medium" onclick="openFullNav(this);"
+             style="position: fixed; z-index: 3; right: 92px; top: 20px;">
+            <div class="bar1 w3-white"></div>
+            <div class="bar2 w3-white"></div>
+            <div class="bar3 w3-white"></div>
+        </div>
+
+        <div class="w3-text-white w3-padding w3-dropdown-hover w3-hide"
+             style="position: fixed; z-index: 3; right: 24px; top: 13px;" id="log_state_ON">
+            <form action="Phps/logout.php" method="get">
+                <a href="javascript:void(0);"><i
+                        class="fa fa-user-circle-o fa-2x w3-border w3-border-red w3-circle"></i></a>
+
+                <div class="w3-dropdown-content w3-border w3-card-8 w3-small w3-text-white"
+                     style="background-color:rgba(92,102,128,0.67);padding: 4px 2px;">
+
+                    <input type="submit" value="Log m' OUT" class="w3-btn w3-transparent w3-border-red w3-padding-0">
+
+                </div>
+            </form>
+        </div>
+
+        <div class="w3-text-white w3-padding w3-opacity-max w3-show"
+             style="position: fixed; z-index: 3; right: 24px; top: 13px;" id="log_state_OFF">
+            <a href="javascript:void(0);"><i class="fa fa-user-circle-o fa-2x"></i></a>
+        </div>
+    </section>
+
+    <div class="w3-wide showLogo w3-xxlarge w3-padding w3-round  w3-text-white w3-text-shadow w3-margin-top"
+         id="logo"
+         style="font-weight: 700;z-index: 3;position: fixed; background-color: rgba(41, 171, 135,0);">
+        Census <i class="fa fa-exclamation-circle"></i>
+    </div>
+
+
+    <!-- The overlay Fullscreen Navigation-->
+    <div id="fullscreenNav" class="overlay w3-hide-mediufm w3-hideflarge">
+        <!-- Overlay content -->
+        <div class="overlay-content w3-text-white">
+            <ul class="">
+                <li class=""><a href="#"><span>HOME</span></a></li>
+                <li class=""><a href="#_contactUs"><span>ABOUT</span></a></li>
+                <li class=""><a href="#sec-6"><span>CONNECT</span></a></li>
+                <li class=""><a href="#_contactUs"><span>CONTACT</span></a></li>
+                <li class=""><a href="Page/Inquiry_Page.html" class=""><span>INQUIRY</span></a></li>
+
+            </ul>
+        </div>
+
+    </div>
+
+
+    <aside id="accountSideNav" class="sidenav w3-round-large w3-text-light-grey">
+        <div>
+            <i class="fa fa-close fa-2x w3-text-white w3-hover-text-blue-gray" onclick="openSideNav();document.getElementById('_topSideText').classList.toggle('w3-opacity-max');" style="cursor: pointer;"></i>
+        </div>
+        <div id="sideNav1" class="w3-show w3-animate-left">
+            <br>
+            <div class="w3-center">
+                <i class="fa fa-user-circle-o fa-5x w3-text-shadow w3-text-blue-gray w3-opacityd" style="font-size: 128px"></i>
+            </div>
+            <h2 class="capitalize w3-text-blue-gray  w3-xxxlarge w3-text-shadow-white w3-padding-4 w3-center"
+                style="font-weight: 700; ">census
+                <span class="w3-jumbo">staff</span> login</h2>
+
+            <form class="w3-container w3-padding-xxlarge" action="javascript:userLogin('lgForm');" name="lgForm" autocomplete="off.">
+                <label style="font-weight:600" class="w3-text-blue-gray w3-large w3-text-shadow-white"><i class="fa fa-user-circle w3-text-black"></i> Username</label>
+                <input class="w3-input w3-margin-bottom w3-light-gray" type="text" placeholder="Enter Username"
+                       name="userName" required>
+                <label style="font-weight:600" class="w3-text-blue-gray w3-large w3-text-shadow-white"><i class="fa fa-lock w3-text-black"></i> Password</label>
+                <input class="w3-input w3-light-gray" type="password" placeholder="Enter Password" name="psw" required>
+
+				<div class="w3-center w3-hide w3-animate-zoom w3-padding-4" id="_loginError">
+				 	<label class="w3-large w3-text-amber w3-text-shadow-white"><i class="fa fa-bomb fa-2x w3-text-red w3-text-shadow"></i>Failed: Either your username or password is incorrect</label>
+
+				</div>
+                <button class="w3-btn-block w3-wide w3-round-xlarge w3-section w3-padding w3-border-blue-gray w3-blue-gray w3-border w3-hover-opacity w3-text-white w3-hover-"
+                        type="submit"><b>LOG IN</b> <i class="fa fa-sign-in"></i>
+                </button>
+				<hr>
+                <input class="w3-check w3-margin-left" type="checkbox" checked><span class="w3-text-shadow-white" style="color: #546c78"> Remember me</span>
+				
+				<div class="w3-border-top  w3-right">
+
+                <span class="w3-padding w3-hide-small w3-text-black w3-round-large">Forgot <a href="javascript:passReset();">password?</a></span>
+            </div>
+				
+            </form>
+            
+        </div>
+
+
+		<div id="sideNavRsPasw" class="w3-hide w3-animate-left" >
+            <br>
+            <div class="w3-center">
+                <i class="fa fa-user-circle-o fa-5x w3-text-shadow w3-text-blue-gray w3-opacityd" style="font-size: 128px"></i>
+            </div>
+            <h2 class="capitalize w3-text-blue-gray  w3-xxxlarge w3-text-shadow-white w3-padding-4 w3-center"
+                style="font-weight: 700; ">census
+                <span class="w3-jumbo">Reset</span> Pass</h2>
+
+            <form class="w3-container w3-padding-xxlarge" action="javascript:userForgotPass('fgForm');" name="fgForm" autocomplete="off.">
+                <label style="font-weight:600" class="w3-text-blue-gray w3-large w3-text-shadow-white"><i class="fa fa-user-circle w3-text-black"></i> Enter your Username (or Email)</label>
+                <input class="w3-input w3-margin-bottom w3-light-gray" type="text" placeholder="Enter Username"
+                       name="userName" required>
+
+				<div class="w3-center w3-hidde w3-animate-zoom w3-padding-4 w3-hide" id="_resetError">
+				 	<label class="w3-large w3-text-amber "><i class="fa fa-ban fa-2x w3-text-red w3-text-shadow"></i> Failed: Username or Email is not in the system</label>
+
+				</div>
+                <button class="w3-btn-block w3-wide w3-round-xlarge w3-section w3-padding w3-border-blue-gray w3-blue-gray w3-border w3-hover-opacity w3-text-white w3-hover-"
+                        type="submit"><b>Retrieve Password</b> <i class="fa fa-search"></i>
+                </button>
+
+
+				<div class="w3-animate-opacity w3-padding-4 w3-hide" id="passFl">
+					<label class="w3-large">Done: Your password is: <span id="passHolder"></span></label></div>
+
+            </form>
+            <div class="w3-border-top w3-padding-4">
+
+                <span class="w3-right w3-padding w3-hide-small">Back to <a href="javascript:passReset2();">Login?</a></span>
+            </div>
+        </div>
+
+        <section class="w3-right-align w3-hide w3-padding-small" id="sideNav2">
+
+            <form class="w3-form w3-display-topright w3-center w3-padding-12" action="Phps/logout.php" method="get">
+                <button type="submit"
+                        class="w3-btn w3-transparent w3-medium w3-hover-blue-gray w3-round-xlarge w3-black">
+                    <i class="fa fa-sign-out"><br>Sign Out</i></button>
+            </form>
+
+            <div class="w3-center">
+                <img src="../images/Tamzin_merchant2.jpg" class="w3-circle w3-border w3-border-black" width="136px"
+                     height="136px"
+                     style="max-widdth: 100%; heighdt: auto;">
+            </div>
+
+            <h4 class="w3-text-blue-gray w3-text-shadow-white w3-xxlarge" style="text-transform: capitalize;"><b>Welcome to your census account</b></h4>
+
+            <div class="w3-row-padding w3-text-white w3-text-shadow">
+                <ul class="w3-half">
+                    <li><a href="#"><h5><i class="fa fa-black-tie w3-medium"></i> Work ID:</h5>
+                        <p class="w3-small" id="userData[0]">NULL</p></a></li>
+                    <li><a href="#"><h5><i class="fa fa-id-card w3-medium"></i> National ID:</h5>
+                        <p class="w3-small" id="userData[1]">NULL</p></a></li>
+                    <li><a href="#"><h5><i class="fa fa-odnoklassniki w3-medium"></i> Full Names:</h5>
+                        <p class="w3-small" id="userData[2]">NULL</p></a></li>
+                    <li><a href="#"><h5><i class="fa fa-at w3-medium"></i> Email @ddress:</h5>
+                        <p class="w3-small" id="userData[3]">NULL</p></a></li>
+                </ul>
+                <ul class="w3-half">
+                    <li><a href="#"><h5><i class="fa fa-area-chart w3-medium"></i> Area of Operation:</h5>
+                        <p class="w3-small" id="userData[4]">NULL</p></a></li>
+                    <li><a href="#"><h5><i class="w3-medium fa fa-calendar"></i> Days Left:</h5>
+                        <p class="w3-small" id="userData[5]">NULL</p></a></li>
+                    <li><a href="#"><h5><i class="w3-medium fa fa-venus-mars"></i> Gender:</h5>
+                        <p class="w3-small" id="userData[6]">NULL</p></a></li>
+                    <li><a href="#"><h5><i class="fa fa-child w3-medium"></i> Age:</h5>
+                        <p class="w3-small" id="userData[7]">NULL</p></a></li>
+                </ul>
+            </div>
+
+            <br>
+            <div class="w3-right-align">
+                <form action="Page/Forms_Page.php" method="post" name="_FormsPage">
+                    <input type="text" value="ID NOT GENERATED" id="_hhIDGenerator" name="_hhGenId" class="w3-hide">
+                    <button type="submit"
+                            class="w3-padding-12 w3-btn w3-round-jumbo w3-medium w3-card-4 w3-amber w3-hover-opacity w3-blue-gray"><i
+                            class="w3-mediumm w3-text-white fa fa-plus-circle"></i> House Hold
+                    </button>
+                </form>
+            </div>
+
+        </section>
+
+    </aside>
+
+</nav>
+
+<header class="hero w3-display-container defaultHeader" id="header">
+
+    <div class="overlay-header w3-text-white intro">
+        <div>
+            <h1>Census 2018</h1>
+            <span><i class="fa fa-group fa-4x"></i> </span>
+        </div>
+    </div>
+    <div class="snow">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1536" preserveAspectRatio="xMidYMax slice">
+            <g fill="#FFF" fill-opacity=".15" transform="translate(55 42)">
+                <g id="snow-bottom-layer">
+                    <ellipse cx="6" cy="1009.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="138" cy="1110.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="398" cy="1055.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="719" cy="1284.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="760" cy="1155.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="635" cy="1459.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="478" cy="1335.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="322" cy="1414.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="247" cy="1234.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="154" cy="1425.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="731" cy="773.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="599" cy="874.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="339" cy="819.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="239" cy="1004.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="113" cy="863.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="102" cy="1223.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="395" cy="1155.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="826" cy="943.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="626" cy="1054.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="887" cy="1366.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="6" cy="241.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="138" cy="342.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="398" cy="287.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="719" cy="516.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="760" cy="387.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="635" cy="691.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="478" cy="567.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="322" cy="646.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="247" cy="466.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="154" cy="657.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="731" cy="5.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="599" cy="106.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="339" cy="51.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="239" cy="236.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="113" cy="95.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="102" cy="455.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="395" cy="387.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="826" cy="175.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="626" cy="286.5" rx="6" ry="5.5"></ellipse>
+                    <ellipse cx="887" cy="598.5" rx="6" ry="5.5"></ellipse>
+                </g>
+            </g>
+            <g fill="#FFF" fill-opacity=".3" transform="translate(65 63)">
+                <g id="snow-top-layer">
+                    <circle cx="8" cy="776" r="8"></circle>
+                    <circle cx="189" cy="925" r="8"></circle>
+                    <circle cx="548" cy="844" r="8"></circle>
+                    <circle cx="685" cy="1115" r="8"></circle>
+                    <circle cx="858" cy="909" r="8"></circle>
+                    <circle cx="874" cy="1438" r="8" transform="rotate(180 874 1438)"></circle>
+                    <circle cx="657" cy="1256" r="8" transform="rotate(180 657 1256)"></circle>
+                    <circle cx="443" cy="1372" r="8" transform="rotate(180 443 1372)"></circle>
+                    <circle cx="339" cy="1107" r="8" transform="rotate(180 339 1107)"></circle>
+                    <circle cx="24" cy="1305" r="8" transform="rotate(180 24 1305)"></circle>
+                    <circle cx="8" cy="8" r="8"></circle>
+                    <circle cx="189" cy="157" r="8"></circle>
+                    <circle cx="548" cy="76" r="8"></circle>
+                    <circle cx="685" cy="347" r="8"></circle>
+                    <circle cx="858" cy="141" r="8"></circle>
+                    <circle cx="874" cy="670" r="8" transform="rotate(180 874 670)"></circle>
+                    <circle cx="657" cy="488" r="8" transform="rotate(180 657 488)"></circle>
+                    <circle cx="443" cy="604" r="8" transform="rotate(180 443 604)"></circle>
+                    <circle cx="339" cy="339" r="8" transform="rotate(180 339 339)"></circle>
+                    <circle cx="24" cy="537" r="8" transform="rotate(180 24 537)"></circle>
+                </g>
+            </g>
+        </svg>
+    </div>
+    <div class="hero__content">
+
+        <h1 class=" w3-text-shadow w3-display-bottomleft w3-margin-bottom shakeUp" id="contentHeader">
+            <span class="cw">Kenya's population revised to 50.9 Million</span>
+        </h1>
+
+        <h2 class="w3-text-white w3-display-topright w3-xlarge w3-hide-small" id="_topSideText" >
+            Current World population of 7.2 billion<br>
+            is projected to increase by 1 billion<br>
+            over the next 12 years and reach 9.6 billion<br>
+            by 2050, and evidently growth will be mainly<br>
+            in developing countries, with more than<br>
+            half in Africa!
+        </h2>
+
+        <a class="scroll-link" href="#sec-1">
+            <svg class="mouse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 130"
+            >
+                <g fill="none" fill-rule="evenodd">
+                    <rect width="70" height="118" x="1.5" y="1.5" stroke="#FFF" stroke-width="3" rx="36"></rect>
+                    <circle class="scroll" cx="36.5" cy="31.5" r="4.5" fill="#FFF"></circle>
+                </g>
+            </svg>
+        </a>
+    </div>
+
+    <div class="w3-display-bottomright w3-padding-large">
+        <button class="butExecUser w3-btn w3-round w3-hide-small w3-hide-medium w3-round-xxlarge _btnSide"
+                onclick="openSideNav();document.getElementById('_topSideText').classList.toggle('w3-opacity-max');" style="cursor: pointer;"><span>Staff <i
+                class="fa fa-sign-in signBtn"></i>  </span>
+        </button>
+
+
+        <button
+                class="w3-round-large w3-hover-opacity w3-hover-pale-red w3-hover-border-black w3-card-4  w3-border-white w3-border w3-btn w3-transparent w3-medium w3-padding-small w3-hide-medium w3-hide-large  _btnSide"
+                onclick="openSideNav();document.getElementById('_topSideText').classList.toggle('w3-opacity-max');" style="cursor: pointer;"><i
+                class="fa fa-sign-in fah-2x signBtn"></i></button>
+
+
+        <button onclick="openSideNav();document.getElementById('_topSideText').classList.toggle('w3-opacity-max');"
+                class=" w3-btn  w3-transparent w3-hide-small w3-hide-large w3-large w3-border w3-border-white w3-hover-border-dark-gray w3-round-xxlarge  _btnSide">
+            Staff <i class="fa fa-sign-in signBtn"></i>
+        </button>
+    </div>
+
+
+</header>
+
+<main class="w3-white w3-card-2" id="main">
+    <section id="sec-1" class="sec-main w3-center w3-panel">
+        <p class="w3-serif bgAnimObj w3-text-white w3-round-large"><i class="fa fa-quote-left"></i><br>
+            Whole communities are growing up without fathers or male role models. Bringing up a family in the best
+            circumstances is not easy.
+            To try to do it by placing the entire burden on women - 91% of single-parent families in Kenya are headed by
+            the mother, according to
+            census data-is pratcially absurd and morally indefensible<br>
+            Its perfectly reasonable for someone to be hesitant to share their personal information with the government.
+            The census bureau shouldnt be
+            forcing anyone to share the route they take their kids to school or any information other than how many
+            people live in their home<br>
+            The true test of civilistion is, not the census, nor the size of the cities , nor the crops, but the kind of
+            man that the country turns out.
+        </p>
+    </section>
+
+    <section class="w3-container w3-center sec-main" id="sec-2">
+        <h2 class="cw">The world's population Estimates</h2>
+        <hr style="width: 30%;margin: 24px auto; border-color: gray">
+        <div class="w3-row-padding w3-center">
+            <div class="w3-half">
+                <img src="images/population_p%20(1).png" width="527"
+                     height="auto" class="w3-image" style="max-width: 100%"/>
+            </div>
+            <div class="w3-half">
+                <p class="w3-xlarge0" style=""> Current world population is 7.6 billion as of 2018, whereby China leads
+                    by an overwhelming 1.338 billion people, whereas Kenya s trailing behind at 50.9 billion souls!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec-main w3-center w3-display-container " id="sec-3" style="margin-top: 32px; ">
+        <h2> Kenya's Population in Various Cities</h2>
+        <hr style="width: 30%;margin: 24px auto; border-color: gray">
+
+        <div class="w3-row-padding infoView" id="viewInfo1">
+            <div class=" w3-third w3-red  w3-large w3-padding-32 w3-hover-shadow">
+               <div class="w3-margin-0 w3-padding-0" style="position: absolute; width: 100%; height: 100%; background-color: rgba(110,161,255,0.22)">
+                   <h3 class="w3-left-align w3-text-shadow-white">Nairobi</h3>
+                   <p class="w3-right-align w3-padding-small">Nairobi is the second-largest city in the African Great lakes
+                       area with 3.5 million residents. With the suburbs included,
+                       Nairobi is Africa's 14<sup>th</sup> largest city with <em>6.54</em> million people </p>
+               </div>
+            </div>
+            <div class="w3-opacity-min w3-margin-top w3-third w3-large w3-pale-red w3-hover-shadow  w3-padding-32 w3-border-left w3-border-right  ">
+                <div class="" style="position: absolute; width: 100%; height: 100%; background-color: rgba(255,224,131,0.22)">
+                <h3 class="w3-left-align w3-text-shadow w3-text-amber">Mombasa</h3>
+                <p class="w3-right-align w3-padding-small">Mombasa is a city on the coast of Kenya. It is the country's
+                    oldest and second-largest city, after the capital Nairobi, with an estimated population of about 1.4
+                    million people in 2016</p>
+            </div></div>
+            <div class="w3-opacity-min w3-third w3-large w3-padding-32 w3-white w3-hover-shadow">
+                <div class="" style="position: absolute; width: 100%; height: 100%; background-color: rgba(34,38,85,0.43)">
+                <h3 class="w3-left-align w3-text-shadow w3-text-yellow">Kisumu</h3>
+                <p class="w3-right-align w3-padding-small" style="banckground-color: rgba(0,0,0,0.3)">Kisumu is a Kenyan port city on Lake Victoria. The
+                    city’s Kisumu Museum displays artifacts related to the people of the Nyanza Province. Southwest,
+                    Ruma National Park has tall cliffs, roan antelope and birdlife.
+                    Kisumu is the third-most-populous city / town in Kenya by population (1,118,000)</p>
+            </div></div>
+
+        </div>
+    </section>
+    <br><br>
+    <section class="w3-container w3-display-container w3-center sec-main w3-hide-small" id="sec-4" style="margin-bottom: 64px">
+        <div class="w3-row" style="height: 766px">
+            <div class="w3-col l6 m6 s12 mainCardA" style="height: 100%">
+                <div class="w3-card-12 mainCard defaultCss dfc " id="cardA1">
+                    <h3 class="w3-text-shadow-white">Kenya's Young Population</h3>
+                    <p class="w3-large">Kenya has a very young population that has led to very rapid growth. Almost
+                        three-quarters of the population is under the age of 30 & kenaya has grown
+                        from 2.9 million to almost 40 million people within a century</p>
+                    <div class="w3-left-align">
+                        <img src="images/kenya-population-pyramid-2016.png" width="512" height="auto"
+                             style="max-width: 100%" class="w3-hover-opacity">
+                    </div>
+                </div>
+                <div class="w3-card-12 mainCard defaultCss dfc w3-hover-red" id="cardA2">
+                    <h5>Word's Population Growth Curve</h5>
+                    <img src="images/pop_growth.png" width="576" height="auto" style="max-width: 100%">
+                </div>
+            </div>
+            <div class="w3-col l6 m6 s12 mainCard mainCardA" style="height: 100%">
+                <div class="defaultCss w3-card-24 w3-hover-blue-gray" id="cardA3">
+                    <h3 class="w3-text-light-grey w3-text-shadow-white">Kenyan Demographics</h3>
+                    <p class="w3-text-light-grey w3-large">Kenya's population is very diverse and home to most of
+                        Africa's linguistic and ethnoracial groups.
+                        There are believed to be at least 42 communities, although Nilotes(30%) and Bantu(67%) account
+                        for a majority, followed by
+                        Cushitic groups, Arabs, Indians, and Europeans</p>
+                    <img src="images/darkweb1%20(1).png" width="636" height="auto" style="max-width: 100%" class="w3-hover-opacity">
+                </div>
+            </div>
+        </div>
+    </section>
+    <br><br>
+    <section id="sec-7" class="w3-container sec-main">
+        <h2 class="w3-center">More Collective Data on Pop..</h2>
+        <hr style="width: 30%;margin: 24px auto; border-color: gray">
+        <div class="w3-row-padding">
+            <div class="w3-col l6 m12 s12 w3-card-2">
+                <h3 class="">Kenya Population Clock</h3>
+                <table class="w3-table w3-bordered">
+                    <tr>
+                        <td>The population of Kenya(as of 8/8/2018)?</td>
+                        <td>51,084,493</td>
+                    </tr>
+                    <tr>
+                        <td>Last UN Estimate(July 1, 2018)</td>
+                        <td class="">,87950,950</td>
+                    </tr>
+                    <tr>
+                        <td>Births Per Day</td>
+                        <td>4,237</td>
+                    </tr>
+                    <tr>
+                        <td>Deaths Per Day</td>
+                        <td>784</td>
+                    </tr>
+
+                    <tr>
+                        <td>Net Migrations Per Day</td>
+                        <td>-27</td>
+                    </tr>
+                    <tr>
+                        <td>Ney Change Per Day</td>
+                        <td>3,426</td>
+                    </tr>
+                    <tr>
+                        <td>Population Change Since January 1st</td>
+                        <td>753,720</td>
+                    </tr>
+                    <tr>
+                        <td class="w3-center w3-opacity">Net Increase in 1 person every 25 seconds</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="w3-col l6 m12 s12 w3-margin-top" style="">
+                <h3 class="">Components of Population Change(kenya)</h3>
+                <table class="w3-table w3-bordered w3-border">
+                    <tr>
+                        <td class="w3-padding-16">One birth every 20 seconds</td>
+                    </tr>
+                    <tr>
+                        <td class="w3-padding-16">One death every 2 minutes</td>
+                        <td class="w3-padding-16"><span class="w3-text-blue-gray w3-blue-gray">Death rate is good</span></td>
+                    </tr>
+                    <tr>
+                        <td class="w3-padding-16">One net migrant every 53 minutes</td>
+                    </tr>
+                    <tr>
+                        <td class="w3-padding-16">Net gain of one person every 25 Seconds</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+    <br><br>
+    <section id="sec-5" class="w3-container sec-main">
+        <h2 class="w3-center">Kenya's Population by Year</h2>
+        <hr style="width: 30%;margin: 24px auto; border-color: gray">
+        <div class="w3-row-padding">
+            <div class="w3-responsive w3-col l6 m12 s12 w3-margin-bottom tableDefault" id="tableContainer1">
+                <h4 class="w3-blue-gray w3-round-xxlarge w3-padding-small w3-text-shadow w3-opacity-min">Kenya Population by Year<span class="w3-text-black w3-text-shadow-white w3-grayscale-min"> (historical) </span></h4>
+                <table class="w3-table-all">
+                    <tr class="w3-opacity-min w3-grayscale-min" style="background-color: #879fab">
+                        <th>Year</th>
+                        <th>Population</th>
+                        <th>%Male</th>
+                        <th>%Female</th>
+                        <th>Density(KM<sup>2</sup>)</th>
+                        <th>Pop...Rank</th>
+                        <th>GrowthRate</th>
+                    </tr>
+                    <tr>
+                        <td>2010</td>
+                        <td>41,350,152</td>
+                        <td>49.71%</td>
+                        <td>50.29%</td>
+                        <td>71.25</td>
+                        <td>31</td>
+                        <td>2.78</td>
+                    </tr>
+                    <tr>
+                        <td>2000</td>
+                        <td>31,450,483</td>
+                        <td>49.66%</td>
+                        <td>50.34%</td>
+                        <td>54.19</td>
+                        <td>33</td>
+                        <td>2.84</td>
+                    </tr>
+
+                    <tr>
+                        <td>1990</td>
+                        <td>23,402,507</td>
+                        <td>49.78%</td>
+                        <td>50.22%</td>
+                        <td>40.32</td>
+                        <td>37</td>
+                        <td>3.56</td>
+                    </tr>
+
+                    <tr>
+                        <td>1980</td>
+                        <td>16,268,990/td>
+                        <td>49.80%</td>
+                        <td>50.20%</td>
+                        <td>28.03</td>
+                        <td>40</td>
+                        <td>3.8</td>
+                    </tr>
+
+                    <tr>
+                        <td>1970</td>
+                        <td>11,252,492</td>
+                        <td>49.88%</td>
+                        <td>50.12%</td>
+                        <td>19.39</td>
+                        <td>47</td>
+                        <td>3.43</td>
+                    </tr>
+                </table>
+            </div>
+            <p class="w3-wide w3-center w3-small w3-hide-large w3-hide-medium">&larr; scrollable &rarr;</p>
+            <div class="w3-responsive w3-col l6 m12 s12 tableDefault" id="tableContainer2">
+                <h4 class="w3-blue-gray w3-round-xxlarge w3-padding-small w3-text-shadow">Kenya Population by Year<span class=""> (Projection) </span></h4>
+                <table class="w3-table-all">
+                    <tr class="w3-text-white" style="background-color: #495f69">
+                        <th>Year</th>
+                        <th>Population</th>
+                        <th>%Male</th>
+                        <th>%Female</th>
+                        <th>Density(KM<sup>2</sup>)</th>
+                        <th>Pop...Rank</th>
+                        <th>GrowthRate</th>
+                    </tr>
+                    <tr>
+                        <td>2020</td>
+                        <td>53,491,697</td>
+                        <td>49.70%</td>
+                        <td>50.30%</td>
+                        <td>92.17</td>
+                        <td>27</td>
+                        <td class="w3-text-red">0.00%</td>
+                    </tr>
+                    <tr>
+                        <td>2030</td>
+                        <td>66,959,993</td>
+                        <td>49.72%</td>
+                        <td>50.28%</td>
+                        <td>115.38</td>
+                        <td>24</td>
+                        <td>2.20</td>
+                    </tr>
+                    <tr>
+                        <td>2040</td>
+                        <td>81,286,865</td>
+                        <td>49.74%</td>
+                        <td>50.26%</td>
+                        <td>140.06</td>
+                        <td>21</td>
+                        <td>1.87</td>
+                    </tr>
+                    <tr>
+                        <td>2050</td>
+                        <td>95,467,137</td>
+                        <td>49.75%</td>
+                        <td>50.25%</td>
+                        <td>164.49</td>
+                        <td>20</td>
+                        <td>1.54</td>
+                    </tr>
+                    <tr>
+                        <td>2060</td>
+                        <td>108,838,578</td>
+                        <td>49.73%</td>
+                        <td>50.27%</td>
+                        <td>187.53</td>
+                        <td>18</td>
+                        <td>1.25</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="sec-6" class="sec-main">
+        <h2 class="w3-center">Connect With us & lets share</h2>
+        <hr style="width: 30%;margin: 24px auto; border-color: gray">
+        <div class="w3-row-padding">
+            <fieldset style="border-bottom: 0; border-left: 0;border-right: 0;">
+                <legend class="w3-wide w3-large">Lets Connect</legend>
+                <article class="w3-col l6 s12 w3-center">
+                    <br>
+                    <i class="fa fa-connectdevelop  fa-4x w3-text-blue-gray"></i>
+                    <p class="w3-xlarge"><br>With the evolving rate of technology building towards our country's future
+                        will never be the same</p>
+                    <p class="w3-xlarge">Do you have any inquiry that's itching you up?</p>
+                </article>
+
+                <article class="w3-col l6 s12 w3-border-left">
+                    <form class="w3-form ">
+                        <label>Your Name</label>
+                        <input type="text" class="w3-input w3-animate-input" required>
+                        <label>Email *</label>
+                        <input type="text" class="w3-input w3-animate-input" required>
+                        <label>Comment</label>
+                        <textarea class="w3-input w3-border" style="resize:none" required></textarea>
+                        <br>
+                        <input type="submit" class="w3-input w3-btn-block w3-blue-gray" id="_contactUs">
+                    </form>
+                </article>
+            </fieldset>
+        </div>
+    </section>
+</main>
+
+
+<br><br>
+
+<footer class="footer w3-center w3-text-white w3-padding-0  w3-display-container"
+>
+    <article class="w3-padding-32">
+        <h2 style="text-transform: uppercase">First Digital Census in Kenya</h2>
+        <ul class="w3-centered w3-opacity">
+            <li>Wolrd's Population</li>
+            <li class="w3-center">Demography</li>
+            <li>Growth Curve</li>
+        </ul>
+    </article>
+
+    <fieldset class="w3-padding-medium w3-row-padding w3-text-white w3-left-align"
+              style="border-left: 0px;border-right: 0px; border-bottom: 0px;">
+        <legend class="capitalize w3-opacity w3-wide">MORE CONTENT</legend>
+        <div class="w3-third">
+            <h2 class="w3-xxxlarge w3-left-align w3-text-shadow-white">
+                <i class="fa fa-group w3-text-amber w3-opacity"></i>
+                <br>Census 2018</h2>
+            <img src="images/vision2030.png" width="128" height="auto" style="max-width: 100%">
+            <span class=""><i>Towards a globally competitive and prosperous nation</i></span>
+        </div>
+        <div class="w3-third">
+            <div class="w3-padding-medium w3-center">
+                <h2 class="w3-xlarge">Join our social media handles today to learn more about
+                    the Census services</h2>
+                <div class="social-icon w3-center w3-padding-32">
+                    <a href=""><i class="fa fa-facebook w3-spin"></i></a>
+                    <a href=""><i class="fa fa-twitter w3-hover-blue w3-spin"></i></a>
+                    <a href=""><i class="fa fa-instagram w3-text-brown w3-spin"></i></a>
+                    <a href=""><i class="fa fa-pinterest w3-hover-red w3-text-red w3-spin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="w3-third" style="padding-left:72px">
+            <h2 class="w3-xlarge">Contact Us</h2>
+            <div>
+                <h6><b>Email</b></h6>
+                <span>General Information: info@census.co.ke</span><br>
+                <span>Sales & Partnerships: partners@census.co.ke</span><br>
+            </div>
+            <div>
+                <h6><b>Phone</b></h6>
+                <span>Kenya: +254(712) 345 678</span><br>
+            </div>
+            <br>
+            <div class="w3-text-gray">
+                Our offices <img src="images/kenya.png" width="20px" height="20px">
+            </div>
+        </div>
+    </fieldset>
+    <h2 class="w3-opacity w3-medium">&copy; Census 2018 <a href="">All Rights Reserved</a></h2>
+
+    <div class=" w3-display-topright" style="top: -28px">
+        <a href="#nav" class="scroll-down">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="m0 93.301l49.996-86.602 50.004 86.602z"></path>
+            </svg>
+
+        </a>
+    </div>
+    <div class="bubbles-container">
+        <svg class="bubbles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 701 1024" style="overflow: visible;">
+
+            <g class="bubbles-large" stroke-width="7">
+                <g>
+                    <g transform="translate(10 940)">
+                        <circle cx="35" cy="35" r="35"></circle>
+                    </g>
+                </g>
+                <g>
+                    <g transform="translate(373 940)">
+                        <circle cx="35" cy="35" r="35"></circle>
+                    </g>
+                </g>
+                <g>
+                    <g transform="translate(408 940)">
+                        <circle cx="35" cy="35" r="35"></circle>
+                    </g>
+                </g>
+                <g>
+                    <g transform="translate(621 940)">
+                        <circle cx="35" cy="35" r="35"></circle>
+                    </g>
+                </g>
+                <g>
+                    <g transform="translate(179 940)">
+                        <circle cx="35" cy="35" r="35"></circle>
+                    </g>
+                </g>
+            </g>
+
+            <g class="bubbles-small" stroke-width="4">
+                <g>
+                    <g transform="translate(147 984)">
+                        <circle cx="15" cy="15" r="15"></circle>
+                    </g>
+                </g>
+                <g>
+                    <g transform="translate(255 984)">
+                        <circle cx="15" cy="15" r="15"></circle>
+                    </g>
+                </g>
+                <g>
+                    <g transform="translate(573 984)">
+                        <circle cx="15" cy="15" r="15"></circle>
+                    </g>
+                </g>
+                <g>
+                    <g transform="translate(429 984)">
+                        <circle cx="15" cy="15" r="15"></circle>
+                    </g>
+                </g>
+                <g>
+                    <g transform="translate(91 984)">
+                        <circle cx="15" cy="15" r="15"></circle>
+                    </g>
+                </g>
+                <g>
+                    <g transform="translate(640 984)">
+                        <circle cx="15" cy="15" r="15"></circle>
+                    </g>
+                </g>
+                <g>
+                    <g transform="translate(321 984)">
+                        <circle cx="15" cy="15" r="15"></circle>
+                    </g>
+                </g>
+                <g>
+                    <g transform="translate(376 984)">
+                        <circle cx="15" cy="15" r="15"></circle>
+                    </g>
+                </g>
+                <g>
+                    <g transform="translate(376 984)">
+                        <circle cx="15" cy="15" r="15"></circle>
+                    </g>
+                </g>
+                <g>
+                    <g transform="translate(497 984)">
+                        <circle cx="15" cy="15" r="15"></circle>
+                    </g>
+                </g>
+            </g>
+
+        </svg>
+    </div>
+</footer>
+</body>
+<script type="text/javascript" src="scripts/main.js"></script>
+
+
+</html>
